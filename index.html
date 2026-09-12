@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Портфолио | Артем Арафаилов</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Шапка -->
+    <header>
+      <h1>Артем Арафаилов</h1>
+      <p>Android-разработчик (Kotlin, MVVM)</p>
+    </header>
+
+    <!-- Блок "Обо мне" -->
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p>Разрабатываю мобильные приложения...</p>
+    </section>
+
+    <!-- Ключевые проекты / Фичи -->
+    <section id="projects">
+      <h2>Ключевой опыт</h2>
+      <div class="card">
+        <h3>Авторизация с Refresh-токенами</h3>
+        <p>Реализация безопасного входа...</p>
+      </div>
+      <div class="card">
+        <h3>Список новостей</h3>
+        <p>Парсинг JSON, бесконечный скролл...</p>
+      </div>
+      <div class="card">
+        <h3>Экран «Наша миссия»</h3>
+        <p>Работа со сложными версткой и анимациями...</p>
+      </div>
+    </section>
+
+    <!-- Кнопки действий -->
+    <footer>
+      <button id="downloadPdf">Скачать резюме (PDF)</button>
+      <a href="https://github.com/ArtemArafailov/VH_upd" target="_blank"
+        >Код проектов</a
+      >
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+#downloadPdf {
+  padding: 15px 30px;
+  background: #007cba;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Скрываем кнопку скачивания при печати документа */
+@media print {
+  #downloadPdf,
+  header > p,
+  footer a {
+    display: none;
+  }
+}
