@@ -1,21 +1,1098 @@
-/* style.css */
+/* ============================================ */
+/* ЦВЕТОВАЯ СХЕМА И РАЗМЕРЫ (ЛЕГКАЯ СМЕНА ТЕМЫ) */
+/* ============================================ */
+:root {
+  /* Размеры элементов */
+  --btn-size-primary: 56px;
+  --btn-size-secondary: 44px;
+  --border-radius-base: 8px;
+  --border-radius-full: 50%;
+
+  /* Палитра текста */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #333;
+  --color-text-tertiary: #555;
+  --color-text-muted: #888;
+
+  /* Палитра фона */
+  --color-bg-page: #fff;
+  --color-bg-card: #fff;
+  --color-bg-header-gradient-start: #f9f9f9;
+  --color-bg-header-gradient-end: #ffffff;
+  --color-bg-footer: #f9f9f9;
+  --color-bg-hover: #f0f0f0;
+
+  /* Палитра границ и акцентов */
+  --color-border-light: #eee;
+  --color-border-medium: #e0e0e0;
+  --color-border-dark: #000;
+  --color-accent-icon: #ffac4d;
+  --color-accent-link: #007cba;
+  --color-accent-link-hover: #ffac4d;
+
+  /* Выделение текста */
+  --color-selection-text: #fff;
+  --color-selection-bg: #007cba;
+
+  /* Эффекты */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 8px 20px rgba(0, 0, 0, 0.18);
+  --shadow-text-sm: 0 1px 2px rgba(0, 0, 0, 0.2); /* Основная тень: небольшое смещение вниз + сильное размытие */
+  --shadow-text-md: 0 2px 4px rgba(0, 0, 0, 0.2); /* Вторая тень для глубины */
+  --shadow-section-title: 0 10px 15px -10px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================ */
+/* БАЗОВЫЕ СТИЛИ (для экрана - работают всегда) */
+/* ============================================ */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-}
-#downloadPdf {
-  padding: 15px 30px;
-  background: #007cba;
-  color: white;
-  border: none;
-  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-secondary);
 }
 
-/* Скрываем кнопку скачивания при печати документа */
-@media print {
-  #downloadPdf,
-  header > p,
-  footer a {
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Для современных браузеров */
+::selection {
+  color: var(--color-selection-text);
+  background-color: var(--color-selection-bg);
+}
+
+/* Для старых версий Firefox */
+::-moz-selection {
+  color: var(--color-selection-text);
+  background-color: var(--color-selection-bg);
+}
+
+/* Для старых версий Safari/Chrome (сейчас обычно не нужен, но бывает полезен) */
+::-webkit-selection {
+  color: var(--color-selection-text);
+  background-color: var(--color-selection-bg);
+}
+
+/* --- ШАПКА --- */
+.main-header {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  background: linear-gradient(
+    to right,
+    var(--color-bg-header-gradient-start) 0%,
+    var(--color-bg-header-gradient-end) 35%,
+    var(--color-bg-header-gradient-end) 65%,
+    var(--color-bg-header-gradient-start) 100%
+  );
+}
+
+/* --- РЯД: Фото + Информация --- */
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+/* --- Блок с фото --- */
+.header-photo-wrapper {
+  flex-shrink: 0;
+  width: 256px;
+  height: 256px;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-full);
+  object-fit: cover;
+  display: block;
+  border: 4px solid var(--color-bg-page);
+  box-shadow: var(--shadow-md);
+}
+
+/* --- Блок с информацией (справа) --- */
+.header-content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.resume-name {
+  margin: 0 0 8px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.resume-position {
+  margin: 0 0 24px 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Блок контактов и профилей --- */
+.main-contacts-block {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.inner-grid-contacts,
+.inner-grid-profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.inner-grid-profiles {
+  margin-top: 24px;
+}
+
+.col-1,
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.inner-grid-contacts p,
+.inner-grid-profiles p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.contact-icon,
+.single-color-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.contact-icon svg,
+.single-color-icon-wrapper svg {
+  fill: currentColor;
+  transition: fill 0.2s ease;
+  display: block;
+  margin: 0;
+}
+
+.icon-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: contents;
+}
+
+.icon-link:hover {
+  color: var(--color-accent-link);
+}
+
+/* --- Линия-разделитель --- */
+.divider-line {
+  border: 0;
+  height: 1px;
+  background-color: var(--color-border-light);
+  margin: 24px 0;
+  width: 100%;
+}
+
+/* Утилиты текста */
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .header-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header-photo-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .resume-position {
+    margin-top: 12px;
+  }
+
+  .inner-grid-contacts,
+  .inner-grid-profiles {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ======================================= */
+/* ОСТАЛЬНЫЕ БЛОКИ (Навыки, Опыт, Проекты) */
+/* ======================================= */
+
+/* Заголовок у секций */
+.section-title {
+  display: block; /* обычный блочный элемент */
+  width: fit-content; /* ширина ровно по тексту */
+  margin: 40px auto 30px auto; /* центрируем сам блок через margin: auto */
+  padding: 4px 16px; /* внутренние отступы для скруглённого фона */
+  border-radius: 12px; /* скругление */
+  background-color: transparent; /* полупрозрачный фон */
+  text-align: center; /* текст по центру внутри */
+  color: var(--color-text-secondary);
+  position: relative;
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: 400;
+  box-shadow: var(--shadow-section-title);
+}
+
+/* --- КЛЮЧЕВЫЕ СКИЛЛЫ---  */
+.skill-list li {
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.skill-list strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.skill-list em {
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+/* --- ОПЫТ РАБОТЫ (TIMELINE) --- */
+.experience-timeline {
+  position: relative; /* Используем те же отступы, что и во всем сайте, чтобы дизайн был единым */
+  margin-bottom: 64px; /* Отступ до следующей секции */
+}
+
+.timeline-item {
+  display: grid;
+  /* Создаем две колонки: узкую для даты и широкую для контента */
+  grid-template-columns: 80px 1fr; /* minmax(120px, auto) 1fr; */
+  gap: 24px; /* Расстояние между датой и карточками */
+  align-items: start; /* Выравниваем по верхнему краю текста */
+}
+
+/* КОЛОНКА С ДАТОЙ */
+.timeline-period {
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+  text-align: left;
+  padding-left: 8px; /* Отступ от края страницы */
+  word-break: break-all;
+  flex-shrink: 0;
+  line-height: 1.4;
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  z-index: 1;
+}
+
+/* КОЛОНКА С КОНТЕНТОМ */
+.timeline-content {
+  display: contents;
+}
+
+.project-title {
+  margin: 0 0 24px 0;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* --- ПРОЕКТЫ (GRID ВНУТРИ КОНТЕНТ-КОЛОНКИ) --- */
+.projects-grid {
+  grid-column: 2 / -1; /* Начинаем со второй колонки (пропускаем дату) */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  border: 1px solid var(--color-border-light);
+  padding: 20px;
+  border-radius: var(--border-radius-base);
+  background: var(--color-bg-card);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-name {
+  margin: 0 0 12px 0;
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+}
+
+.project-details p,
+.project-details ul {
+  margin: 8px 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+}
+
+.project-tasks strong,
+.project-tech strong {
+  color: var(--color-text-primary);
+}
+
+.project-results {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 0 0;
+  flex-grow: 1;
+}
+
+.project-results li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+}
+
+.project-results li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  color: var(--color-accent-icon);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 0;
+  }
+
+  .timeline-item {
+    /* На мобильных превращаем две колонки в одну */
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .timeline-period {
+    text-align: left;
+    position: static;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--color-border-medium);
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  .timeline-period br {
     display: none;
+  }
+
+  .project-title {
+    grid-column: 1 / -1;
+    font-size: 1.3rem;
+  }
+
+  /* Сетка проектов тоже начинается заново с первой колонки */
+  .projects-grid {
+    grid-column: 1 / -1;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+}
+
+/* --- ОБРАЗОВАНИЕ --- */
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.education-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.education-year {
+  min-width: 65px;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.education-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+}
+
+.education-content p {
+  margin: 0;
+  color: var(--color-text-tertiary);
+  font-size: 0.95rem;
+}
+
+.netology-certificate-link {
+  color: var(--color-accent-link);
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+  display: inline-block;
+}
+
+.netology-certificate-link:hover {
+  transform: translateY(-1px);
+  color: var(--color-accent-link-hover);
+  text-decoration: underline;
+  text-shadow: var(--shadow-text-sm);
+}
+
+/* --- ПРОЧИЕ БЛОКИ --- */
+.simple-row {
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.simple-row strong {
+  color: var(--color-text-muted);
+}
+
+.about-text {
+  margin: 0 0 16px 0;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.about-github {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-light);
+  font-size: 0.95rem;
+  color: var(--color-text-tertiary);
+}
+
+.github-link {
+  color: var(--color-accent-link);
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+  display: inline-block;
+}
+
+.github-link:hover {
+  transform: translateY(-1px);
+  color: var(--color-accent-link-hover);
+  text-decoration: underline;
+  text-shadow: var(--shadow-text-sm);
+}
+
+/* --- ПОДВАЛ --- */
+.footer {
+  padding: 40px 0;
+  width: 100%;
+  background-color: var(--color-bg-footer);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.footer-actions {
+  display: grid;
+  /* Три колонки: фиксированная ширина слева, гибкая по центру, фиксированная справа */
+  grid-template-columns: 200px 1fr 200px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px; /* Расстояние между колонками */
+  min-height: 80px; /* Фиксируем высоту, чтобы футер не сжимался */
+  align-items: center; /* Вертикальное выравнивание по центру */
+}
+
+/* Колонка 1: Кнопка */
+.col-left {
+  display: flex;
+  justify-content: flex-start; /* Кнопка прижата к левому краю своей колонки */
+}
+
+/* Колонка 2: Соцсети */
+.col-center {
+  display: flex;
+  justify-content: center; /* Соцсети по центру своей колонки */
+}
+
+/* Колонка 3: Копирайт */
+.col-right {
+  display: flex;
+  justify-content: flex-end; /* Копирайт прижат к правому краю своей колонки */
+}
+
+/* Базовый блок: всё общее для обеих кнопок */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--color-bg-primary); /* Значение по умолчанию */
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none; /* Для тегов <a> */
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+  padding: 0;
+  margin: 0;
+  border: 2px solid transparent; /* По умолчанию границы нет, добавим её модификатором */
+  box-sizing: border-box;
+}
+
+/* Кнопка "Скачать PDF" (слева) */
+#downloadPdf {
+  flex-shrink: 0; /* Не сжимать кнопку */
+}
+
+/* Модификатор основной кнопки */
+.btn--primary {
+  width: var(--btn-size-primary);
+  height: var(--btn-size-primary);
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--primary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-text-primary);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+/* Модификатор вторичных кнопок */
+.btn--secondary {
+  width: var(--btn-size-secondary);
+  height: var(--btn-size-secondary);
+  background-color: var(--color-bg-page);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--secondary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-bg-hover);
+}
+
+/* Клавиатурная навигация */
+.btn--primary:focus-visible,
+.btn--secondary:focus-visible {
+  outline: 2px solid var(--color-accent-link);
+  outline-offset: 4px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center; /* Иконки по центру ВНУТРИ своего блока */
+  gap: 24px;
+  flex-wrap: wrap; /* На случай, если иконок станет много */
+}
+
+.copyright {
+  flex-shrink: 0; /* Не сжимать копирайт */
+  margin-top: 30px; /* Убираем любые отступы, которые ломают высоту */
+  white-space: nowrap; /* Чтобы текст не переносился */
+  text-align: right; /* Выравнивание текста по правому краю */
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .footer-actions {
+    /* На мобильном превращаем сетку в одну колонку */
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .col-left,
+  .col-center,
+  .col-right {
+    justify-content: center; /* На мобильном всё по центру */
+  }
+
+  .col-right {
+    white-space: normal; /* Разрешаем перенос строк в копирайте */
+  }
+}
+
+/* ============================================= */
+/* СТИЛИ ДЛЯ ПЕЧАТИ (РАБОТАЮТ ТОЛЬКО ПРИ ПЕЧАТИ) */
+/* ============================================= */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
+    line-height: 1.3;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .footer,
+  .btn-icon,
+  button,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+
+  .main-header {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+  }
+
+  /* --- ШАПКА --- */
+  .header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between;
+    gap: 30px !important;
+    width: 100% !important;
+  }
+
+  .header-photo-wrapper {
+    width: 25% !important;
+    min-width: 140px !important;
+    max-width: 160px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .profile-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: var(--border-radius-full) !important;
+    border: 2px solid #ddd !important;
+    box-shadow: none !important;
+  }
+
+  .header-content {
+    width: 70% !important;
+    min-width: 0 !important;
+    flex-shrink: 1 !important;
+    text-align: left !important;
+  }
+
+  .resume-name,
+  .resume-position {
+    margin: 0 !important;
+    line-height: 1.2;
+  }
+
+  .resume-name {
+    font-size: 1.8rem;
+  }
+
+  .resume-position {
+    margin: 6px 0 !important;
+    font-size: 1.2rem;
+    color: #007cba;
+  }
+
+  /* --- Двухколоночные блоки (Контакты и Соцсети) --- */
+  .inner-grid-contacts,
+  .inner-grid-profiles {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 90% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .col-1,
+  .col-2 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* --- Строки контактов (Иконка + Текст) --- */
+  .inner-grid-contacts p,
+  .inner-grid-profiles p {
+    display: block !important;
+    align-items: center !important;
+    margin: 6px 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    /* Убираем любые переносы внутри строки */
+    white-space: nowrap !important;
+  }
+
+  .contact-icon,
+  .single-color-icon-wrapper {
+    flex-shrink: 0 !important;
+    margin-right: 0 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  svg {
+    fill: #000 !important;
+    width: 14px !important;
+    height: 14px !important;
+    display: inline-block !important;
+  }
+
+  .icon-link {
+    color: #000 !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: auto !important;
+    display: inline !important; /* важно для PDF */
+    text-decoration: none !important;
+  }
+
+  /* --- Горизонтальная линия --- */
+  .divider-line {
+    display: block !important;
+    width: 100% !important;
+    height: 0 !important;
+    border: none !important;
+    margin: 8px 0 !important;
+    box-shadow: none !important;
+    /* Гарантированный вариант через рамку, если фон не печатается */
+    border-top: 1px solid #ddd !important;
+    /* Сбрасываем любые грид-свойства, если они наследуются */
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  .section-title {
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 1.2rem;
+    padding: 0;
+    margin: 10px auto;
+    position: static;
+    z-index: auto;
+  }
+
+  h3 {
+    font-size: 0.85rem;
+    margin: 8px 0 2px !important;
+    color: #007cba;
+  }
+
+  /* --- КЛЮЧЕВЫЕ СКИЛЛЫ---  */
+  .skill-list {
+    margin: 0 !important;
+  }
+
+  .skill-list li {
+    line-height: 1.4;
+    color: black;
+  }
+
+  .skill-list strong {
+    color: black;
+    font-weight: 600;
+  }
+
+  .skill-list em {
+    color: gray;
+    font-style: italic;
+  }
+
+  /* --- ОПЫТ---  */
+  /* Родитель: жёсткая сетка */
+  .timeline-item {
+    display: grid;
+    /* Фиксируем колонки: узкая дата, остальное место */
+    grid-template-columns: 70px 1fr;
+    /* Строки: авто для первой (дата+заголовок), авто для проектов */
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 0;
+    margin-bottom: 24px;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  /* Дата: левая колонка, первая строка */
+  .timeline-period {
+    grid-column: 1;
+    grid-row: 1;
+    /* Выравнивание ВНУТРИ ячейки: к верху и влево */
+    align-self: start;
+    justify-self: start;
+    /* Ширина строго по колонке */
+    width: 100%;
+    text-align: left;
+    /* Перенос: разрешаем, но аккуратно */
+    white-space: normal;
+    padding: 0 12px 0 0 !important;
+    margin: 0 !important;
+    border-bottom: none !important;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #555;
+    line-height: 1.2; /* Плотный интервал, чтобы две строки даты не разъезжались */
+  }
+
+  .timeline-period br {
+    display: block;
+  }
+
+  /* Контейнер контента: делаем его "невидимым" для сетки */
+  .timeline-content {
+    display: contents;
+    /* Убираем любые padding/margin у самого контейнера, если они есть */
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Заголовок места работы: правая колонка, первая строка */
+  .project-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #000;
+    /* Убираем любые float или position, если они наследуются */
+    float: none !important;
+    position: static !important;
+    padding-left: 10px;
+    border-left: 1px solid #ddd !important;
+  }
+
+  /* Проекты — ВТОРАЯ строка, на всю ширину */
+  .projects-grid {
+    grid-column: 1 / -1; /* вся ширина, обе колонки */
+    grid-row: 2;
+    display: block; /* карточки в одну колонку */
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    /* Горизонтальная линия — это border-top */
+    border-top: 1px solid #ddd;
+    margin-top: 6px;
+    padding-top: 10px;
+  }
+
+  /* Карточки — плоские */
+  .project-card {
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+
+  .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .project-name {
+    margin: 0 0 4px 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .project-details p,
+  .project-details ul {
+    margin: 6px 0 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .project-tasks strong,
+  .project-tech strong {
+    color: #555;
+  }
+
+  .project-results {
+    list-style: none;
+    padding-left: 0;
+    margin: 4px 0 0 0;
+    flex-grow: 1;
+  }
+
+  .project-results li {
+    list-style: none;
+    padding-left: 20px;
+    margin: 4px 0 0 0;
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .project-results li::before {
+    content: '✦' !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 14px;
+    color: #007cba;
+  }
+  article {
+    margin: 4px 0 10px !important;
+  }
+
+  .timeline-item {
+    margin: 0 !important;
+  }
+
+  .experience-timeline {
+    margin: 0 !important;
+  }
+
+  /* --- ОБРАЗОВАНИЕ --- */
+  #education {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #education .education-list {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  #education .education-item {
+    display: table-row;
+    /* граница снизу — между строками (курсами) */
+    /* border-bottom: 1px solid #000; */
+  }
+
+  #education .education-year {
+    display: table-cell;
+    width: 50px;
+    padding: 8px 0px 8px 15px;
+    /* выравнивание по верху ячейки */
+    vertical-align: top;
+    text-align: left;
+    font-weight: 700;
+    color: #555;
+    /* вертикальная граница между годом и контентом */
+    border-right: 1px solid #ddd;
+    font-size: 0.9rem;
+  }
+
+  #education .education-content {
+    display: table-cell;
+    padding: 8px 0 8px 12px; /* отступ слева, чтобы не прилипало к границе */
+    /* выравнивание по верху — критично, если название курса длинное */
+    vertical-align: top;
+    color: #000;
+  }
+
+  #education .education-course {
+    margin: 0 !important;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  #education .education-direction {
+    margin: 4px 0 0 0;
+    font-size: 0.8rem;
+    color: #333;
+    line-height: 1.3;
+  }
+
+  /* Убираем стиль ссылки: цвет, подчёркивание, курсор */
+  #education a.netology-certificate-link {
+    color: #007cba !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: auto !important;
+  }
+
+  /* --- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ --- */
+  .simple-row {
+    margin: 0 0 6px;
+  }
+
+  /* --- ОБО МНЕ --- */
+  .about-text {
+    margin: 0 0 6px;
+  }
+
+  .about-github {
+    margin-top: 0;
+    padding-top: 6px;
+    border-top: 1px solid #ddd;
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  .github-link {
+    color: #007cba !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: auto !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
   }
 }

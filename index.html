@@ -2,49 +2,502 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>Портфолио | Артем Арафаилов</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Артем Арафаилов | QA Engineer / Инженер по тестированию</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="icon" type="image/svg+xml" href="assets/icons/site-icon.svg">
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/site-icon.svg" />
+    <meta
+      name="description"
+      content="Профессиональное резюме Артема Арафаилова — инженера по тестированию/QA Engineer с опытом автоматизации тестов на Selenide/Cypress и Espresso."
+    />
+    <script src="./assets/js/icons.js"></script>
   </head>
+
   <body>
-    <!-- Шапка -->
-    <header>
-      <h1>Артем Арафаилов</h1>
-      <p>Android-разработчик (Kotlin, MVVM)</p>
+    <!-- ШАПКА -->
+    <header class="main-header">
+      <div class="container">
+        <!-- Этот блок отвечает за разделение на 2 колонки -->
+        <div class="header-row">
+          <!-- Фото (лево) -->
+          <div class="header-photo-wrapper">
+            <img
+              src="./assets/images/profile-photo.jpg"
+              alt="Артем Арафаилов"
+              class="profile-photo"
+            />
+          </div>
+
+          <!-- Даннык (право) -->
+          <div class="header-content">
+            <h1 class="resume-name">Артем Арафаилов</h1>
+            <h2 class="resume-position">Инженер по тестированию</h2>
+
+            <div class="main-contacts-block">
+              <!-- Сетка контактов -->
+              <div class="inner-grid-contacts">
+                <!-- Колонка 1 -->
+                <div class="col-1">
+                  <p>
+                    <span
+                      class="contact-icon"
+                      data-icon="location"
+                      data-size="20"
+                    ></span>
+                    Россия, Киров
+                  </p>
+                  <p>
+                    <a href="mailto:artem.ar888@yandex.ru" class="icon-link">
+                      <span
+                        class="single-color-icon-wrapper"
+                        data-icon="mail"
+                        data-size="20"
+                      ></span>
+                      artem.ar888@yandex.ru
+                    </a>
+                  </p>
+                </div>
+
+                <!-- Колонка 2 -->
+                <div class="col-2">
+                  <p>
+                    <a
+                      href="https://t.me/ar888_ru"
+                      class="icon-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        class="single-color-icon-wrapper"
+                        data-icon="telegram"
+                        data-size="20"
+                      ></span>
+                      t.me/ar888_ru
+                    </a>
+                  </p>
+                  <p>
+                    <a href="tel:+79195001234" class="icon-link">
+                      <span
+                        class="single-color-icon-wrapper"
+                        data-icon="phone"
+                        data-size="20"
+                      ></span>
+                      +7 919 500‑12‑34
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Горизонтальная линия -->
+              <hr class="divider-line" />
+
+              <!-- Сетка профилей -->
+              <div class="inner-grid-profiles">
+                <div class="col-1">
+                  <p>
+                    <a
+                      href="https://career.habr.com/ar888"
+                      class="icon-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        class="single-color-icon-wrapper"
+                        data-icon="habr"
+                        data-size="20"
+                      ></span>
+                      career.habr.com/ar888
+                    </a>
+                  </p>
+                </div>
+                <div class="col-2">
+                  <p>
+                    <a
+                      href="https://github.com/artem-ar888"
+                      class="icon-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span
+                        class="single-color-icon-wrapper"
+                        data-icon="github"
+                        data-size="20"
+                      ></span>
+                      github.com/artem-ar888
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- Блок "Обо мне" -->
-    <section id="about">
-      <h2>Обо мне</h2>
-      <p>Разрабатываю мобильные приложения...</p>
+    <!-- КЛЮЧЕВЫЕ КОМПЕТЕНЦИИ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">Ключевые компетенции</h2>
+
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3>Языки программирования и автоматизация</h3>
+            <ul class="skill-list">
+              <li>
+                <strong>Java:</strong> Selenide, JUnit 5, TestNG, Cucumber
+              </li>
+              <li>
+                <strong>JavaScript:</strong> Playwright, Cypress, Puppeteer,
+                Jest
+              </li>
+              <li><strong>Python:</strong> <em>базовый уровень</em></li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <h3>Тестирование (UI / Mobile / API)</h3>
+            <ul class="skill-list">
+              <li>
+                <strong>Web UI:</strong> Selenium WebDriver, Selenide,
+                Playwright, Cypress
+              </li>
+              <li><strong>Mobile:</strong> Espresso, Appium</li>
+              <li><strong>API:</strong> Postman, REST Assured</li>
+              <li><strong>Нагрузочное:</strong> Apache JMeter</li>
+              <li><strong>Безопасность:</strong> OWASP ZAP</li>
+            </ul>
+          </div>
+
+          <div class="skill-block">
+            <h3>Инженерные практики</h3>
+            <ul class="skill-list">
+              <li><strong>Сборка и зависимости:</strong> Gradle, Maven</li>
+              <li><strong>CI/CD:</strong> GitHub Actions, AppVeyor</li>
+              <li><strong>Контроль версий:</strong> Git</li>
+              <li><strong>Виртуализация:</strong> Docker, Docker Compose</li>
+              <li><strong>Отчётность:</strong> Allure Reports</li>
+              <li><strong>Анализ трафика:</strong> Charles Proxy, Wireshark</li>
+              <li>
+                <strong>Базы данных:</strong> SQL (<em>SELECT, JOIN</em>),
+                DBeaver
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Ключевые проекты / Фичи -->
-    <section id="projects">
-      <h2>Ключевой опыт</h2>
-      <div class="card">
-        <h3>Авторизация с Refresh-токенами</h3>
-        <p>Реализация безопасного входа...</p>
-      </div>
-      <div class="card">
-        <h3>Список новостей</h3>
-        <p>Парсинг JSON, бесконечный скролл...</p>
-      </div>
-      <div class="card">
-        <h3>Экран «Наша миссия»</h3>
-        <p>Работа со сложными версткой и анимациями...</p>
+    <!-- ПРОФЕССИОНАЛЬНЫЙ ОПЫТ -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">Профессиональный опыт</h2>
+
+        <div class="experience-timeline">
+          <!-- Теперь это один общий элемент -->
+          <div class="timeline-item">
+            <!-- Дата как отдельный блок -->
+            <div class="timeline-period">12.2024&nbsp;– <br>07.2026</div>
+
+            <!-- Весь контент теперь находится здесь -->
+            <div class="timeline-content">
+              <h3 class="project-title">
+                Учебные проекты в Нетологии – направление «Программирование»,<br />
+                курс «Инженер по тестированию: расширенный курс»
+              </h3>
+
+              <div class="projects-grid">
+                <!-- Проект 1 -->
+                <article class="project-card">
+                  <h4 class="project-name">
+                    Автоматизация мобильного приложения («Мобильный хоспис»)
+                  </h4>
+                  <div class="project-details">
+                    <p class="project-tasks">
+                      <strong>Задачи:</strong> Разработка E2E‑тестов нативного
+                      Android‑приложения с нуля; ручное тестирование UI/UX.
+                    </p>
+                    <p class="project-tech">
+                      <strong>Технологии:</strong> Java/Kotlin, Espresso, Idling
+                      Resources, Allure Reports, GitHub Issues.
+                    </p>
+                    <ul class="project-results">
+                      <li>
+                        Сократил время регрессионного тестирования в 20+ раз за
+                        счет автоматизации 85 сценариев.
+                      </li>
+                      <li>
+                        Повысил стабильность прогонов до 99% благодаря отказу от
+                        sleep в пользу Idling Resources.
+                      </li>
+                      <li>Выявил 21 дефект интерфейса.</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Проект 2 -->
+                <article class="project-card">
+                  <h4 class="project-name">
+                    Автоматизация банковского приложения (Java + SQL)
+                  </h4>
+                  <div class="project-details">
+                    <p class="project-tasks">
+                      <strong>Задачи:</strong> Написание автотестов авторизации
+                      и транзакций; проверка данных в БД; настройка CI/CD.
+                    </p>
+                    <p class="project-tech">
+                      <strong>Технологии:</strong> Java, Selenide, JUnit 5,
+                      MySQL, Docker Compose, GitHub Actions.
+                    </p>
+                    <ul class="project-results">
+                      <li>
+                        Настроил пайплайн в GitHub Actions: запуск тестов теперь
+                        происходит автоматически при каждом коммите.
+                      </li>
+                      <li>
+                        Внедрил проверку целостности данных через SQL-запросы к
+                        MySQL, исключив риск потери платежей на уровне логики.
+                      </li>
+                      <li>
+                        Поднял изолированное тестовое окружение через Docker
+                        Compose.
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Проект 3 -->
+                <article class="project-card">
+                  <h4 class="project-name">
+                    Кросс-браузерное тестирование онлайн-кинотеатра
+                  </h4>
+                  <div class="project-details">
+                    <p class="project-tasks">
+                      <strong>Задачи:</strong> Покрытие пользовательских
+                      сценариев (поиск, оплата); ускорение выполнения тестов.
+                    </p>
+                    <p class="project-tech">
+                      <strong>Технологии:</strong> JavaScript, Cypress, Parallel
+                      Testing, Custom Commands.
+                    </p>
+                    <ul class="project-results">
+                      <li>
+                        Ускорил прохождение полного набора тестов в 4 раза за
+                        счет параллельного запуска инстансов.
+                      </li>
+                      <li>
+                        Разработал библиотеку из 15+ кастомных команд (Custom
+                        Commands) для сокращения дублирования кода.
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- Проект 4 -->
+                <article class="project-card">
+                  <h4 class="project-name">
+                    Ручное тестирование интернет-магазина
+                  </h4>
+                  <div class="project-details">
+                    <p class="project-tasks">
+                      <strong>Задачи:</strong> Проведение полного цикла
+                      функционального тестирования реального коммерческого сайта
+                      без доступа к исходному коду (Black Box Testing); поиск
+                      дефектов UI/UX и анализ требований безопасности.
+                    </p>
+                    <p class="project-tech">
+                      <strong>Технологии:</strong> DevTools, Google Sheets,
+                      техники тест-дизайна (классы эквивалентности, граничные
+                      значения).
+                    </p>
+                    <ul class="project-results">
+                      <li>
+                        Разработал 96-пунктовый чек-лист личного кабинета с
+                        приоритизацией.
+                      </li>
+                      <li>
+                        Написал 18 атомарных тест-кейсов модуля восстановления
+                        пароля.
+                      </li>
+                      <li>Завел 7 баг-репортов.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Кнопки действий -->
-    <footer>
-      <button id="downloadPdf">Скачать резюме (PDF)</button>
-      <a href="https://github.com/ArtemArafailov/VH_upd" target="_blank"
-        >Код проектов</a
-      >
+    <!-- ОБРАЗОВАНИЕ -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">Образование</h2>
+
+        <div class="education-list">
+          <div class="education-item">
+            <div class="education-year">2026</div>
+            <div class="education-content">
+              <h3 class="education-course">
+                Нетология, «Инженер по тестированию: расширенный курс» (<a
+                  href="https://netology.ru/sharing/c1db25d259166f5087834feeb5ac46e0?utm_source=social&utm_campaign=certificate_lms"
+                  class="netology-certificate-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >сертификат</a
+                >)
+              </h3>
+              <p class="education-direction">Направление: Программирование</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
+    <section id="additional" class="section">
+      <div class="container">
+        <h2 class="section-title">Дополнительная информация</h2>
+
+        <p class="simple-row">
+          <strong>Готовность к работе:</strong> Удалённо либо гибридный график в
+          пределах своего города.
+        </p>
+
+        <p class="simple-row">
+          <strong>Языки:</strong> Русский — родной. Английский — базовый уровень
+          (чтение технической документации с использованием словаря). Готов
+          восстановить и развивать навыки при необходимости.
+        </p>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">Обо мне</h2>
+
+        <div class="about-content">
+          <p class="about-text">
+            QA-инженер с аналитическим мышлением и готовностью решать сложные
+            задачи. Умею составлять техническую документацию и владею базовыми
+            знаниями HTML/CSS. Использую AI-инструменты для генерации тестовых
+            данных и оптимизации рабочего процесса.
+          </p>
+
+          <p class="about-text">
+            В предыдущем опыте оператора станков ЧПУ научился быть внимательным
+            к деталям и находить причины ошибок в сложных системах. Это
+            позволило мне быстро освоить теорию тестирования и успешно пройти
+            курс Нетологии. Готов применять свои навыки в команде, которая ценит
+            ответственность, инициативность и готовность учиться новому.
+          </p>
+
+          <p class="about-github">
+            Примеры кода автотестов и учебные проекты доступны в моём профиле на
+            GitHub:
+            <a
+              href="https://github.com/artem-ar888"
+              class="github-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              >github.com/artem-ar888</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+      <div class="container footer-actions">
+        <!-- Колонка 1: Кнопка слева -->
+        <div class="col col-left">
+          <!-- Кнопка скачивания в PDF -->
+          <button
+            id="downloadPdf"
+            type="button"
+            onclick="window.print()"
+            class="btn btn--primary"
+            aria-label="Скачать резюме (PDF)"
+          >
+            <span
+              class="single-color-icon-wrapper"
+              data-icon="dlPdf"
+              data-size="34"
+            ></span>
+          </button>
+        </div>
+
+        <!-- Колонка 2: Соцсети по центру -->
+        <div class="col col-center">
+          <!-- Блок с иконками без текста -->
+          <div class="social-icons">
+            <a
+              href="https://github.com/artem-ar888"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              class="btn btn--secondary"
+            >
+              <span
+                class="single-color-icon-wrapper"
+                data-icon="github"
+                data-size="24"
+              ></span>
+            </a>
+
+            <a
+              href="https://t.me/ar888_ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              class="btn btn--secondary"
+            >
+              <span
+                class="single-color-icon-wrapper"
+                data-icon="telegram"
+                data-size="24"
+              ></span>
+            </a>
+
+            <a
+              href="mailto:artem.ar888@yandex.ru"
+              aria-label="Email"
+              class="btn btn--secondary"
+            >
+              <span
+                class="single-color-icon-wrapper"
+                data-icon="mail"
+                data-size="24"
+              ></span>
+            </a>
+
+            <a
+              href="https://career.habr.com/ar888"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Habr Career"
+              class="btn btn--secondary"
+            >
+              <span
+                class="single-color-icon-wrapper"
+                data-icon="habr"
+                data-size="24"
+              ></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Колонка 3: Копирайт справа -->
+        <div class="col col-right">
+          <p class="copyright">
+            © Артем Арафаилов, <span id="year">2026</span>
+          </p>
+        </div>
+      </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script defer src="./assets/js/script.js"></script>
+    <script defer src="./assets/js/utils.js"></script>
   </body>
 </html>
