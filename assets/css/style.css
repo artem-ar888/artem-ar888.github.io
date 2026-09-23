@@ -257,19 +257,30 @@ body {
   box-shadow: var(--shadow-section-title);
 }
 
-/* --- КЛЮЧЕВЫЕ СКИЛЛЫ---  */
-.skill-list li {
-  line-height: 1.6;
+/* --- КЛЮЧЕВЫЕ СКИЛЛЫ--- */
+#skills h3 {
+  /* Заголовок должен быть "прижат" к описанию сверху */
+  margin: 0;
+  font-size: var(--font-size-h3);
+  color: var(--color-text-primary);
+}
+
+#skills p {
+  /* Убираем дефолтный верхний отступ у абзаца,
+     чтобы он начинался сразу под заголовком */
+  margin-top: 6px !important;
+  margin-left: 16px;
+  line-height: 1.3; /* Плотная строка */
   color: var(--color-text-secondary);
 }
 
-.skill-list strong {
+#skills strong {
   color: var(--color-text-primary);
   font-weight: 600;
 }
 
-.skill-list em {
-  color: var(--color-text-tertiary);
+#skills em {
+  color: var(—color-text-tertiary);
   font-style: italic;
 }
 
@@ -304,7 +315,7 @@ body {
 
 /* КОЛОНКА С КОНТЕНТОМ */
 .timeline-content {
-  display: contents;
+  display: block;
 }
 
 .project-title {
@@ -453,13 +464,20 @@ body {
   font-weight: 700;
   font-size: 1.1rem;
   line-height: 1.4;
-  text-align: right;
+  text-align: left;
+  padding-left: 8px;
+}
+
+#education .education-year span {
+  display: block; /* Каждый span — отдельная строка */
+  white-space: nowrap; /* Запрещаем перенос внутри span */
 }
 
 .education-content h3 {
   margin: 0 0 4px 0;
   font-size: 1.15rem;
   color: var(--color-text-primary);
+  line-height: 1.4;
 }
 
 .education-content p {
@@ -595,14 +613,15 @@ body {
 .btn--primary {
   width: var(--btn-size-primary);
   height: var(--btn-size-primary);
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-primary);
+  background-color: var(--color-bg-page);
+  border-color: var(--color-text-muted);
   box-shadow: var(--shadow-md);
 }
 
 .btn--primary:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+  background-color: var(--color-bg-hover);
   border-color: var(--color-text-primary);
 }
 
@@ -796,7 +815,6 @@ body {
 
   .icon-link {
     color: #000 !important;
-    text-decoration: none !important;
     background: transparent !important;
     border: none !important;
     cursor: auto !important;
@@ -837,123 +855,101 @@ body {
     color: #007cba;
   }
 
-  /* --- КЛЮЧЕВЫЕ СКИЛЛЫ---  */
-  .skill-list {
+  /* --- КЛЮЧЕВЫЕ СКИЛЛЫ--- */
+  #skills h3 {
+    display: inline !important;
     margin: 0 !important;
+    padding: 0 !important;
+    /* font-size: 0.9rem !important; */
+    font-weight: 700 !important;
+    color: #000 !important;
+    line-height: 1.4 !important;
   }
 
-  .skill-list li {
-    line-height: 1.4;
-    color: black;
+  #skills h3 + p {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 0 0 0.4em !important; /* небольшой отступ между заголовком и текстом */
+    /* font-size: 0.9rem !important; */
+    line-height: 1.4 !important;
+    color: #000 !important;
   }
 
-  .skill-list strong {
-    color: black;
-    font-weight: 600;
-  }
-
-  .skill-list em {
-    color: gray;
-    font-style: italic;
+  /* Разрыв строки между парами h3+p */
+  #skills h3 + p::after {
+    content: '';
+    display: block;
+    margin-bottom: 6px;
   }
 
   /* --- ОПЫТ---  */
   /* Родитель: жёсткая сетка */
-  .timeline-item {
-    display: grid;
-    /* Фиксируем колонки: узкая дата, остальное место */
-    grid-template-columns: 70px 1fr;
-    /* Строки: авто для первой (дата+заголовок), авто для проектов */
-    grid-template-rows: auto auto;
-    column-gap: 10px;
-    row-gap: 0;
-    margin-bottom: 24px;
+  .timeline-item,
+  .timeline-item.job-position {
+    display: block; /* <-- одна колонка */
+    margin-bottom: 20px;
     padding: 0 !important;
     border: none !important;
   }
 
-  /* Дата: левая колонка, первая строка */
+  /* Дата — одна строка */
   .timeline-period {
-    grid-column: 1;
-    grid-row: 1;
-    /* Выравнивание ВНУТРИ ячейки: к верху и влево */
-    align-self: start;
-    justify-self: start;
-    /* Ширина строго по колонке */
+    display: block;
     width: 100%;
     text-align: left;
-    /* Перенос: разрешаем, но аккуратно */
-    white-space: normal;
-    padding: 0 12px 0 0 !important;
-    margin: 0 !important;
-    border-bottom: none !important;
+    padding: 0 !important;
+    margin: 0 0 6px 0 !important;
     font-size: 0.9rem;
     font-weight: 700;
     color: #555;
-    line-height: 1.2; /* Плотный интервал, чтобы две строки даты не разъезжались */
+    line-height: 1.2;
+    white-space: nowrap; /* <-- запрещаем перенос */
+    border-bottom: none !important;
+    page-break-after: avoid; /* <-- дата не должна отрываться от заголовка */
   }
 
+  /* Скрываем br, чтобы дата была в одну строку */
   .timeline-period br {
-    display: block;
+    display: none !important;
   }
 
-  /* Контейнер контента: делаем его "невидимым" для сетки */
+  /* Контент — блок под датой */
   .timeline-content {
-    display: contents;
-    /* Убираем любые padding/margin у самого контейнера, если они есть */
+    display: block;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* Заголовок места работы: правая колонка, первая строка */
-  .project-title {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: start !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+  /* Заголовок места работы */
+  .project-title,
+  .timeline-item.job-position .project-title {
+    display: block;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
     font-size: 0.9rem;
     line-height: 1.4;
     font-weight: 700;
     color: #000;
-    /* Убираем любые float или position, если они наследуются */
-    float: none !important;
-    position: static !important;
-    padding-left: 10px;
-    border-left: 1px solid #ddd !important;
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid #ddd;
+    padding-top: 6px !important;
   }
 
-  /* Проекты — ВТОРАЯ строка, на всю ширину */
+  /* Проекты внутри опыта */
   .projects-grid {
-    grid-column: 1 / -1; /* вся ширина, обе колонки */
-    grid-row: 2;
-    display: block; /* карточки в одну колонку */
-    grid-template-columns: 1fr;
-    gap: 20px;
-
-    /* Горизонтальная линия — это border-top */
-    border-top: 1px solid #ddd;
-    margin-top: 6px;
-    padding-top: 10px;
+    display: block;
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
   }
 
   /* Карточки — плоские */
   .project-card {
     border: none;
     padding: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-    height: auto;
-    display: block;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     page-break-inside: avoid;
-  }
-
-  .project-card:hover {
-    transform: none;
-    box-shadow: none;
   }
 
   .project-name {
@@ -1003,12 +999,31 @@ body {
     margin: 4px 0 10px !important;
   }
 
-  .timeline-item {
+  .experience-timeline {
     margin: 0 !important;
   }
 
-  .experience-timeline {
-    margin: 0 !important;
+  .timeline-item.job-position .job-details {
+  display: block !important;
+  width: 100% !important;
+  margin: 6px 0 0 0 !important;
+  padding: 0 !important; /* <-- убираем padding-top, который создавал отступ */
+  border-top: none !important; /* <-- убираем линию, она уже есть у project-title */
+}
+
+  .timeline-item.job-position .job-details br {
+    display: none !important;
+  }
+
+  /* Стиль текста обязанностей */
+
+  .job-details p {
+    display: block !important;
+    margin: 0 0 8px 0 !important;
+    text-align: left !important;
+    white-space: normal !important;
+    line-height: 1.5;
+    color: var(--color-text-primary);
   }
 
   /* --- ОБРАЗОВАНИЕ --- */
@@ -1018,38 +1033,51 @@ body {
   }
 
   #education .education-list {
-    display: table;
+    display: block;
     width: 100%;
-    border-collapse: collapse;
     margin-top: 10px;
   }
 
   #education .education-item {
-    display: table-row;
-    /* граница снизу — между строками (курсами) */
-    /* border-bottom: 1px solid #000; */
+    display: block; /* <-- одна колонка */
+    margin-bottom: 14px;
+    padding: 0 !important;
+    page-break-inside: avoid;
   }
 
+  /* Год — одна строка */
   #education .education-year {
-    display: table-cell;
-    width: 50px;
-    padding: 8px 0px 8px 15px;
-    /* выравнивание по верху ячейки */
-    vertical-align: top;
+    display: block;
+    width: 100%;
     text-align: left;
+    padding: 0 !important;
+    margin: 0 0 6px 0 !important;
     font-weight: 700;
     color: #555;
-    /* вертикальная граница между годом и контентом */
-    border-right: 1px solid #ddd;
     font-size: 0.9rem;
+    line-height: 1.2;
+    white-space: nowrap; /* <-- запрещаем перенос */
+    border-right: none !important;
+    border-bottom: none !important;
   }
 
+  /* Спаны становятся inline, чтобы год был в одну строку */
+  #education .education-year span {
+    display: inline !important;
+    white-space: nowrap;
+  }
+
+  /* Убираем пробел между спанами, если он есть */
+  #education .education-year span + span {
+    margin-left: 0.3em;
+  }
+
+  /* Контент — блок под годом */
   #education .education-content {
-    display: table-cell;
-    padding: 8px 0 8px 12px; /* отступ слева, чтобы не прилипало к границе */
-    /* выравнивание по верху — критично, если название курса длинное */
-    vertical-align: top;
+    display: block;
     color: #000;
+    border-top: 1px solid #ddd;
+    padding-top: 6px;
   }
 
   #education .education-course {
@@ -1058,7 +1086,7 @@ body {
     line-height: 1.3;
   }
 
-  #education .education-direction {
+  #education .education-details {
     margin: 4px 0 0 0;
     font-size: 0.8rem;
     color: #333;
